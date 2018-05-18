@@ -2,9 +2,15 @@
         const gulpimagemin = require('gulp-imagemin');
         const clean = require('gulp-clean');
         const concat = require('gulp-concat');
+        const cleanCSS = require( 'gulp-clean-css' );
+        const htmlReplace = require( 'gulp-html-replace' );
 
 
-    gulp.task('default', function() {
+    gulp.task( 'default' , [ 'copy' ], function () {
+gulp.start( 'build-img' , 'merge-css' , 'html-replace' );
+});
+
+        
        gulp.task('copy', function() {
         gulp.src('C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/images/**/*')
         .pipe(gulp.dest('dist') );
@@ -17,23 +23,30 @@
 
         gulp.task( 'build-img' , function() { gulp.src('C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/images/**/*')
         .pipe(gulpimagemin() )
-        .pipe(gulp.dest('dist/imagens') );
+        .pipe(gulp.dest('C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/images') );
         });
 
         gulp.task('merge-css', function() {
-        gulp.src('dist/css/**/*.css')
+        gulp.src('C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/css/**/*.css')
         .pipe(concat('formulario.css') )
-        .pipe(gulp.dest('dist/css') );
+        .pipe(gulp.dest('C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/css') );
         });
         
         gulp.task( 'html-replace' , function () {
-            gulp.src( 'dist/**/*.html' )
+            gulp.src( 'C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/**/*.html' )
                 .pipe( htmlReplace({css: 'css/formulario.css' }) )
-                .pipe(gulp.dest( 'dist' ) );
-});
+                    .pipe(gulp.dest( 'C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto' ) );
+            });
 
-    
-});
+            gulp.task( 'merge-css' , function () {
+                gulp.src([ 'C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/css/formulario.css'  ])
+                    .pipe(concat( 'formulario.css' ) )
+                    .pipe(cleanCSS() )
+                    .pipe(gulp.dest( 'C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/css' ) );
+    });
+
+
+   
 
 
    
