@@ -13,7 +13,10 @@
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.4",
     "gulp-concat": "^2.6.1",
-    "gulp-html-replace": "^1.6.2"
+    "gulp-html-replace": "^1.6.2",
+    "gulp-jshint": "^2.1.0",
+    "gulp-lint": "0.0.1",
+    "gulp-uglify": "^3.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
