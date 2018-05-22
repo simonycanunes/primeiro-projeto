@@ -14,12 +14,12 @@
         gulp.task('prettify', function() {
             gulp.src(['./*.css', './*.html', './*.js'])
                 .pipe(prettify())
-                .pipe(gulp.dest('**/*/dist'));
+                .pipe(gulp.dest('dist'));
         });
 
         gulp.task('copy', function() {
             gulp.src('C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/images/**/*')
-                .pipe(gulp.dest('**/*/dist'));
+                .pipe(gulp.dest('dist'));
         });
 
         gulp.task('clean', function() {
@@ -30,13 +30,13 @@
         gulp.task('build-img', function() {
             gulp.src('C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/images/**/*')
                 .pipe(gulpimagemin())
-                .pipe(gulp.dest('**/*/dist'));
+                .pipe(gulp.dest('dist'));
         });
 
         gulp.task('merge-css', function() {
             gulp.src('C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/css/**/*.css')
                 .pipe(concat('formulario.css'))
-                .pipe(gulp.dest('**/*/dist'));
+                .pipe(gulp.dest('dist'));
         });
 
         gulp.task('html-replace', function() {
@@ -44,12 +44,12 @@
                 .pipe(htmlReplace({
                     css: 'css/formulario.css'
                 }))
-                .pipe(gulp.dest('**/*/dist'));
+                .pipe(gulp.dest('dist'));
         });
 
         gulp.task('merge-css', function() {
             gulp.src(['C:/Users/SimonyNunes/Desktop/HIPERMIDIA/primeiro-projeto/css/formulario.css'])
                 .pipe(concat('formulario.css'))
                 .pipe(cleanCSS())
-                .pipe(gulp.dest('**/*/dist'));
+                .pipe(gulp.dest('dist'));
         });
